@@ -16,6 +16,8 @@
     --green: #32cd32;
     --red: #ff4757;
     
+    --accent-cyan: #00d4ff;
+    --text-primary: #ffffff;
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, var(--primary-blue), var(--purple));
     --gradient-secondary: linear-gradient(135deg, var(--secondary-blue), var(--cyan));
@@ -35,6 +37,8 @@
     /* Bordures */
     --border-radius: 12px;
     --border-radius-lg: 20px;
+    --border-radius-md: 15px;
+    --border-color: rgba(255, 255, 255, 0.1);
     
     /* Ombres */
     --shadow-sm: 0 2px 10px rgba(0, 212, 255, 0.1);
@@ -3131,11 +3135,6 @@ body {
 }
 
 .weekly-review-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-}
-
 /* Scrollbar personnalisée */
 ::-webkit-scrollbar {
     width: 8px;

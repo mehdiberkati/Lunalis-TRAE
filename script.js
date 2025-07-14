@@ -77,6 +77,7 @@ class MyRPGLife {
         this.setupEventListeners();
         this.updateUI();
         this.checkDailyReset();
+        this.checkWeeklyReviewAvailability();
         this.loadAchievements();
         this.activateRandomQuests();
         this.updateProjectSelector();
@@ -1485,7 +1486,7 @@ class MyRPGLife {
             location.reload();
         }
     }
-    
+
     // Vérifications quotidiennes
     checkDailyReset() {
         const today = new Date().toDateString();
@@ -1506,9 +1507,23 @@ class MyRPGLife {
                 sleep: { logged: false, hours: 0, bedTime: 'after24' },
                 distractions: { instagram: 0, music: 0 }
             };
-            
+
             this.data.lastActiveDate = today;
             this.saveData();
+            this.checkWeeklyReviewAvailability();
+        }
+    }
+
+    // Réactivation du bilan hebdomadaire après 7 jours
+    checkWeeklyReviewAvailability() {
+        if (!this.data.lastWeeklyReview) {
+            this.data.weeklyReviewAvailable = true;
+            return;
+        }
+        const last = new Date(this.data.lastWeeklyReview);
+        const now = new Date();
+        if (now - last >= 7 * 24 * 60 * 60 * 1000) {
+            this.data.weeklyReviewAvailable = true;
         }
     }
     
